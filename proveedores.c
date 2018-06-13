@@ -50,9 +50,9 @@ void stockMenorDiez(eProducto vec[],int menor){
     printf("\n\n ");system("pause");
 }
 
-void listaProductos(eProducto vec[]){
-    eProducto aux;
-    for(int i=0;i<TAM-1&&vec[i].isEmpty!=1;i++){
+int listarProductos(eProducto vec[],int mostrar){
+    eProducto aux;int cont=0;
+    for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
         for(int j=i+1;j<TAM&&vec[j].isEmpty!=1;j++){
             if(stricmp(vec[i].descripcion,vec[j].descripcion)>0){
                 aux=vec[i];
@@ -63,12 +63,15 @@ void listaProductos(eProducto vec[]){
                 vec[i]=vec[j];
                 vec[j]=aux;
             }
-        }
+        }cont++;
     }
-    printf("\n  | Id |                     Descripcion                     | Importe | Cantidad |\n");
-    for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
-        mostrarProducto2(vec[i]);
-    }printf("\n ");system("pause");
+    if(mostrar){
+        printf("\n  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+        for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++)
+            {mostrarProducto2(vec[i]);}
+        printf("\n ");system("pause");
+    }
+    return cont;
 }
 
 void listaMenorDiez(eProducto vec[],int menor){
@@ -165,40 +168,70 @@ void listaPorProv(eProducto vec[],eProveedor vec2[]){
 }
 
 void listaProvCantidadProductos(eProducto vec[],eProveedor vec2[],int menos){
-    int aux,idProvMenos,idProvMas,ConterProv[]={0,0,0,0};
+    int aux,lleno=0,idProvMenos,idProvMas,counterProv[]={0,0,0,0};
     for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
-        aux=vec[i].id-1;ConterProv[aux]++;
+        aux=vec[i].id-1;
+        counterProv[aux]++;
+        lleno=1;
     }aux=0;
     for(int i=0;i<4;i++){
-        if(aux<ConterProv[i]){
-            aux=ConterProv[i];
+        if(aux<counterProv[i]){
+            aux=counterProv[i];
             idProvMas=i;
         }
     }for(int i=0;i<4;i++){
-        if(aux>ConterProv[i]){
-            aux=ConterProv[i];
+        if(aux>counterProv[i]){
+            aux=counterProv[i];
             idProvMenos=i;
         }
     }
-    if(menos){
-        printf("\n El proveedor que provee menos productos es %s\n",vec2[idProvMenos].descripcion);
-        printf("\n Productos de %s:\n",vec2[idProvMenos].descripcion);
-        printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
-        for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
-            if(vec[i].proveedor==vec2[idProvMenos].id){
-                mostrarProducto2(vec[i]);
+    if(lleno){
+        if(menos){
+            printf("\n El proveedor que provee menos productos es %s\n",vec2[idProvMenos].descripcion);
+            printf("\n Productos de %s:\n",vec2[idProvMenos].descripcion);
+            printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+            for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
+                if(vec[i].proveedor==vec2[idProvMenos].id){
+                    mostrarProducto2(vec[i]);
+                }
+            }
+        }else{
+            printf("\n El proveedor que provee mas productos es %s\n",vec2[idProvMas].descripcion);
+            printf("\n Productos de %s:\n",vec2[idProvMas].descripcion);
+            printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+            for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
+                if(vec[i].proveedor==vec2[idProvMas].id){
+                    mostrarProducto2(vec[i]);
+                }
             }
         }
-    }else{
-        printf("\n El proveedor que provee mas productos es %s\n",vec2[idProvMas].descripcion);
-        printf("\n Productos de %s:\n",vec2[idProvMas].descripcion);
-        printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
-        for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
-            if(vec[i].proveedor==vec2[idProvMas].id){
-                mostrarProducto2(vec[i]);
-            }
-        }
-    }
+    }else{printf("\n No hay productos\n");}
     printf("\n ");system("pause");
+}
+
+void proveedorProductoMaxMin(eProducto vec[],eProveedor vec2[],int precio){
+    int cont=listarProductos(vec,0);
+    if(cont==0)
+        {printf("\n No hay productos\n");}
+    else{
+        int aux=0,idmax=0,idmin=0;
+        for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
+            if(i==0&&precio){
+                idmax=vec[i].proveedor-1;
+                printf("\n El producto mas caro\n");
+                printf("_____________________________________________________________________________________\n");
+                printf(" %d-%s:\n ",vec2[idmax].id,vec2[idmax].descripcion);
+                mostrarProducto(vec[i]);
+            }
+            aux=i;
+        }
+        if(aux!=0&&!precio){
+            idmin=vec[aux].proveedor-1;
+            printf("\n El producto mas barato\n");
+            printf("_____________________________________________________________________________________\n");
+            printf(" %d-Producto de %s:\n ",vec2[idmin].id,vec2[idmin].descripcion);
+            mostrarProducto(vec[aux]);
+        }
+    }printf("\n ");system("pause");
 }
 

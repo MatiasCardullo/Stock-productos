@@ -10,7 +10,7 @@ int main(){
     eProducto stock[TAM];
     eProveedor prov[]={ 1, "Coto", 0, 2, "Dia", 0, 3, "Walmart", 0, 4, "Carfour", 0};
     inicializarProductos(stock,TAM);
-    //eProducto stock[]={1,"Mayonesa",56,200,1,0,2,"Ketchup",45,200,4,0,3,"Lego City",120,8,3,0,4,"Canicas",1.5,100,1,0};
+    //eProducto stock[4]={1,"Mayonesa",56,200,1,0,2,"Ketchup",45,200,4,0,3,"Lego City",120,8,3,0,4,"Canicas",1.5,100,1,0};
     while(salir != 1){
         switch(menu()){
         case '1':

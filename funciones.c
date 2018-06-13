@@ -121,7 +121,7 @@ void modificarProducto(eProducto vec[], int tam){
         system("mode con cols=80 lines=20");
         int seguir=1;
         while(seguir){
-            switch(cambiarMenu(vec[esta])){
+            switch(menuModificar(vec[esta])){
                 case '1':
                     getDescripcion(vec,esta,51);
                     cambio=1;break;
@@ -153,7 +153,7 @@ void modificarProducto(eProducto vec[], int tam){
     }
 }*/
 
-char cambiarMenu(eProducto producto){
+char menuModificar(eProducto producto){
     char opcion;
     system("cls");
     printf("________________________________________________________________________________\n");
@@ -227,7 +227,7 @@ void menuListas(eProducto vec[],eProveedor vec2[]){
         system("mode con cols=85 lines=55");
         switch(opcion){
             case 'a':case 'A':
-                listaProductos(vec);
+                listarProductos(vec,1);
                 break;
             case 'b':case 'B':
                 listaMenorDiez(vec,1);
@@ -257,10 +257,10 @@ void menuListas(eProducto vec[],eProveedor vec2[]){
                 listaProvCantidadProductos(vec,vec2,1);
                 break;
             case 'k':case 'K':
-
+                proveedorProductoMaxMin(vec,vec2,1);
                 break;
             case 'l':case 'L':
-
+                proveedorProductoMaxMin(vec,vec2,0);
                 break;
         }
     }while(opcion!=27);

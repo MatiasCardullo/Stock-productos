@@ -3,13 +3,13 @@
 
 typedef struct{
     int id;
-    char descripcion[50];
+    char descripcion[51];
     int isEmpty;
 }eProveedor;
 
 typedef struct{
     int id;
-    char descripcion[50];
+    char descripcion[51];
     float importe;
     int cantidad;
     int proveedor;
@@ -17,7 +17,7 @@ typedef struct{
 } eProducto;
 
 char menu();
-char cambiarMenu(eProducto);
+char menuModificar(eProducto);
 void menuInformes(eProducto[]);
 void menuListas(eProducto[],eProveedor[]);
 
