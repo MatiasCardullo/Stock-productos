@@ -55,7 +55,7 @@ void mostrarProducto(eProducto stck){
 }//muestra X Producto
 
 void mostrarProducto2(eProducto stck){
-    printf("  | %2d | %50s  | %7.2f | %8d |\n", stck.id, stck.descripcion, stck.importe, stck.cantidad);
+    printf("  | %2d | %50s  | %9.2f | %8d |\n", stck.id, stck.descripcion, stck.importe, stck.cantidad);
 }//muestra X Producto
 
 void altaProducto(eProducto vec[],eProveedor vec2[], int tam){
@@ -139,19 +139,6 @@ void modificarProducto(eProducto vec[], int tam){
         }
     }
 }
-
-/*void mostrarProductos(eProducto vec[], int tam){
-    system("cls");
-    system("mode con cols=100 lines=20");
-    printf("____________________________________________________________________________________________________\n");
-    printf("\tLista de Productos\n\n");
-    printf(" id  Apellido                   Nombre                   Sexo  Sueldo          Fecha de Ingreso \n\n");
-    for(int i=0; i< tam; i++){
-        if(vec[i].isEmpty == 0){
-            //mostrarProducto2(vec[i]);
-        }
-    }
-}*/
 
 char menuModificar(eProducto producto){
     char opcion;

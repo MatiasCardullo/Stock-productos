@@ -66,7 +66,7 @@ int listarProductos(eProducto vec[],int mostrar){
         }cont++;
     }
     if(mostrar){
-        printf("\n  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+        printf("\n  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
         for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++)
             {mostrarProducto2(vec[i]);}
         printf("\n ");system("pause");
@@ -80,7 +80,7 @@ void listaMenorDiez(eProducto vec[],int menor){
     }else{
             printf("\n Stock mayor a diez:\n");
     }
-    printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+    printf("  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
     for(int i=0;i<TAM&&vec[i].isEmpty==0;i++){
         if(menor&&vec[i].cantidad<=10){
             mostrarProducto2(vec[i]);
@@ -104,7 +104,7 @@ void listaPromediosSuperan(eProducto vec[],int superaPromedio){
     }else{
             printf("\n Productos que no superan el promedio:\n");
     }
-    printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+    printf("  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
     for(int i=0;i<TAM&&vec[i].isEmpty==0;i++){
         if(superaPromedio&&vec[i].importe>promedio){
                 mostrarProducto2(vec[i]);
@@ -135,7 +135,7 @@ void listaProvMenorDiez(eProducto vec[],eProveedor vec2[]){
 void listaPorProvs(eProducto vec[],eProveedor vec2[]){
     for(int i=0;i<4;i++){
         printf("\n Productos de %s:\n",vec2[i].descripcion);
-        printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+        printf("  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
         for(int j=0;j<TAM&&vec[j].isEmpty!=1;j++){
             //printf("//");mostrarProducto2(vec[j]);
             if(vec[j].proveedor==vec2[i].id){
@@ -158,7 +158,7 @@ void listaPorProv(eProducto vec[],eProveedor vec2[]){
     }while(!(id>0&&id<5));
     system("cls");
     printf("\n Productos de %s:\n",vec2[id-1].descripcion);
-    printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+    printf("  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
     for(int j=0;j<TAM&&vec[j].isEmpty!=1;j++){
         if(vec[j].proveedor==vec2[id-1].id){
             mostrarProducto2(vec[j]);
@@ -189,7 +189,7 @@ void listaProvCantidadProductos(eProducto vec[],eProveedor vec2[],int menos){
         if(menos){
             printf("\n El proveedor que provee menos productos es %s\n",vec2[idProvMenos].descripcion);
             printf("\n Productos de %s:\n",vec2[idProvMenos].descripcion);
-            printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+            printf("  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
             for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
                 if(vec[i].proveedor==vec2[idProvMenos].id){
                     mostrarProducto2(vec[i]);
@@ -198,7 +198,7 @@ void listaProvCantidadProductos(eProducto vec[],eProveedor vec2[],int menos){
         }else{
             printf("\n El proveedor que provee mas productos es %s\n",vec2[idProvMas].descripcion);
             printf("\n Productos de %s:\n",vec2[idProvMas].descripcion);
-            printf("  | Id |                     Descripcion                     | Importe | Cantidad |\n");
+            printf("  | Id |                     Descripcion                     |  Importe  | Cantidad |\n");
             for(int i=0;i<TAM&&vec[i].isEmpty!=1;i++){
                 if(vec[i].proveedor==vec2[idProvMas].id){
                     mostrarProducto2(vec[i]);
