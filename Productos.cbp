@@ -32,6 +32,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="InformesyListas.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="InformesyListas.h" />
 		<Unit filename="funciones.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -39,10 +43,6 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="proveedores.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="proveedores.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

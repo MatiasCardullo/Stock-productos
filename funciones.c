@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include "funciones.h"
-#include "proveedores.h"
+#include "InformesyListas.h"
 
 char menu(){
     char opcion;
@@ -191,9 +191,9 @@ void menuInformes(eProducto vec[]){
 void menuListas(eProducto vec[],eProveedor vec2[]){
     char opcion;
     do{
-        system("mode con cols=85 lines=31");
-        printf("\n\t\t\t\tMenu de listados\n");
-        printf("_____________________________________________________________________________________\n");
+        system("mode con cols=75 lines=31");
+        printf("\n\t\t\t     Menu de listados\n");
+        printf("___________________________________________________________________________\n");
         printf("   A-Listado de todos los productos\n\n");
         printf("   B-Todos los productos con stock menor o igual a 10\n\n");
         printf("   C-Todos los productos con stock mayor a 10\n\n");
@@ -206,12 +206,12 @@ void menuListas(eProducto vec[],eProveedor vec2[]){
         printf("   J-El proveedor que provee menos productos\n\n");//mostrando los productos
         printf("   K-El proveedor que provee el producto mas caro\n\n");//mostrando el producto
         printf("   L-El proveedor que provee el producto menos caro\n");//mostrando el producto
-        printf("_____________________________________________________________________________________\n");
+        printf("___________________________________________________________________________\n");
         do {
             fflush(stdin);
             opcion=getch();
         }while(opcion!=27&&!(opcion>='A'&&opcion<='L')&&!(opcion>='a'&&opcion<='l'));
-        system("mode con cols=85 lines=55");
+        system("mode con cols=87 lines=55");
         switch(opcion){
             case 'a':case 'A':
                 listarProductos(vec,1);
